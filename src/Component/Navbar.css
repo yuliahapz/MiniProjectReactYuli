@@ -1,0 +1,96 @@
+* {
+    box-sizing: border-box;
+  }  
+
+
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #333;
+    height: 5rem;
+    position: relative; /* Pastikan navbar tidak menggunakan position absolute atau fixed tanpa pengaturan top yang benar */
+    margin-top: 20px; /* Tambahkan margin-top untuk menggeser navbar ke bawah jika diperlukan */
+    z-index: 10;
+  }
+  
+  .navbar-logo img {
+    height: 50px;
+    border-radius: 10px;
+  }
+  
+  .navbar-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar-menu li {
+    margin: 0 15px;
+  }
+  
+  .navbar-menu a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .navbar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .navbar-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .navbar-button {
+    background-color: lightcyan;
+    color: black;
+    border: none;
+    padding: 7px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    text-decoration: none;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .navbar-menu {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      background-color: #333;
+    }
+  
+    .navbar-menu.active {
+      display: flex;
+    }
+  
+    .navbar-toggle {
+      display: block;
+    }
+  
+    .navbar-buttons {
+      flex-direction: column;
+      display: flex;
+    }
+  }
+  

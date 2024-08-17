@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: lightcyan; /* Menyesuaikan dengan warna latar belakang utama */
+}
+
+.login-container {
+  display: flex;
+  height: 100vh;
+  background-color: #ffffff;
+}
+
+.login-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f7f7f7; /* Latar belakang form tetap netral */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-form h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: #333; /* Sesuaikan warna teks utama */
+}
+
+.login-form p {
+  font-size: 1rem;
+  color: #555555;
+  margin-bottom: 30px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: darkcyan; /* Sesuaikan warna judul */
+}
+
+.p {
+  color:darkcyan;
+}
+
+.label {
+  margin: 10px 0 5px;
+  color: #333333;
+}
+
+.input-group {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background-color: #e8f5f5; /* Warna latar belakang input yang lembut */
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 15px;
+  background-color: #333; /* Warna tombol serasi dengan tema */
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: darkcyan; /* Warna tombol saat hover */
+}
+
+.signup-link {
+  margin-top: 20px;
+}
+
+.signup-link a {
+  color: darkcyan; /* Warna link serasi dengan tema */
+  text-decoration: none;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+  font-size: 14px;
+}
