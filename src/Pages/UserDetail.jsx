@@ -5,14 +5,14 @@ import "./UserDetail.css";
 
 const UserDetails = () => {
     const [user, setUser] = useState({});
+    const [reviews, setReviews] = useState([]);
     const { id } = useParams();
     const [loading, setLoading] = useState(true);
 
     const getUser = () => {
         setLoading(true);
-        axios.get(`https://reqres.in/api/users/${id}`)  // Corrected URL to include the id from useParams
+        axios.get(`https://reqres.in/api/users/${id}`)
             .then((res) => {
-                console.log("User details fetched:", res.data.data);
                 setUser(res.data.data);
             })
             .catch((err) => {
@@ -23,8 +23,17 @@ const UserDetails = () => {
             });
     }
 
+    const getReviews = () => {
+        // Replace this with an actual API call to get reviews for the Kasir Bersih product/website
+        setReviews([
+            { author: "John Doe", text: "Great app! Very useful for my laundry business." },
+            { author: "Jane Smith", text: "User-friendly interface and excellent features!" },
+        ]);
+    }
+
     useEffect(() => {
         getUser();
+        getReviews();
     }, [id]);
 
     if (loading) {
@@ -32,7 +41,6 @@ const UserDetails = () => {
     }
 
     if (!user.id) {
-        console.log("No user found for ID:", id);
         return <h2>No user found</h2>;
     }
 
@@ -40,11 +48,22 @@ const UserDetails = () => {
         <div className="user-details">
             <h1>User Details</h1>
             <div className="user-card">
-                <p>ID: {user.id}</p>
-                <img src={user.avatar} alt={user.first_name} />
+                <img src={user.avatar} alt={user.first_name} className="user-avatar" />
                 <h2>{user.first_name} {user.last_name}</h2>
                 <p>Email: {user.email}</p>
-                <Link to="/home">Back to Home</Link>
+                <Link to="/home" className="back-link">Back to Home</Link>
+            </div>
+
+            <div className="user-reviews">
+                <h3>Reviews for Kasir Bersih</h3>
+                <div className="review-grid">
+                    {reviews.map((review, index) => (
+                        <div key={index} className="review-card">
+                            <div className="review-author">{review.author}</div>
+                            <div className="review-text">{review.text}</div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );

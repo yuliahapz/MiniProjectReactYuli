@@ -1,23 +1,24 @@
+import "./Navbar.css"
 const Pagination = ({ usersPerPage, totalUsers, paginate }) => {
-  const pageNumbers = [];
+    const pageNumbers = [];
 
-  for (let i = 1; i <= Math.ceil(totalUsers / usersPerPage); i++) {
-    pageNumbers.push(i);
-  }
+    for (let i = 1; i <= Math.ceil(totalUsers / usersPerPage); i++) {
+        pageNumbers.push(i);
+    }
 
-  return (
-    <nav>
-      <ul className="pagination">
-        {pageNumbers.map(number => (
-          <li key={number} className="page-item">
-            <a onClick={() => paginate(number)} href="#" className="page-link">
-              {number}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  );
+    return (
+        <nav className="pagination-nav">
+            {pageNumbers.map(number => (
+                <button
+                    key={number}
+                    onClick={() => paginate(number)}
+                    className="pagination-button"
+                >
+                    {number}
+                </button>
+            ))}
+        </nav>
+    );
 };
 
 export default Pagination;

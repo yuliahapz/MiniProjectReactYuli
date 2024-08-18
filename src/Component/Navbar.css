@@ -1,24 +1,22 @@
 * {
     box-sizing: border-box;
-  }  
-
-
-body, html {
+  }
+  
+  body, html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
   
-
-.navbar {
+  .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
     background-color: #333;
     height: 5rem;
-    position: relative; /* Pastikan navbar tidak menggunakan position absolute atau fixed tanpa pengaturan top yang benar */
-    margin-top: 20px; /* Tambahkan margin-top untuk menggeser navbar ke bawah jika diperlukan */
+    position: relative; 
+    margin: 0; 
     z-index: 10;
   }
   
@@ -68,8 +66,47 @@ body, html {
     text-decoration: none;
   }
   
-  /* Responsive Styles */
+  .pagination-nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination-button {
+    margin: 0 10px; 
+    padding: 10px 15px;
+    background-color: lightcyan;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    border-radius: 4px; 
+    font-size: 16px;
+  }
+  
+  .pagination-button:hover {
+    background-color:cadetblue;
+  }
+  
   @media (max-width: 768px) {
+    .navbar {
+        flex-direction: row-reverse;
+    }
+
+    .navbar-logo {
+        order: 2; 
+        margin: 0 auto; /
+      }
+    
+      .navbar-toggle {
+        order: 3; 
+        display: block;
+      }
+    
+      .navbar-buttons {
+        order: 1;
+        flex-direction: column;
+        display: flex;
+      }
+
     .navbar-menu {
       display: none;
       flex-direction: column;
@@ -91,6 +128,29 @@ body, html {
     .navbar-buttons {
       flex-direction: column;
       display: flex;
+    }
+
+    .navbar-collapse {
+        display: block;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+      }
+    
+      .navbar-collapse.collapsed .navbar-menu {
+        display: none;
+      }
+    
+      .navbar-collapse:not(.collapsed) .navbar-menu {
+        display: flex;
+      }
+
+    
+    .navbar-btn a {
+      color: black;
+      text-decoration: none;
     }
   }
   

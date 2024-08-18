@@ -2,61 +2,69 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Pagination from "../Component/Pagination";
+import "./Home.css";
 
 const Home = () => {
     const [users, setUsers] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
     const [usersPerPage] = useState(6);
     const navigate = useNavigate();
 
     useEffect(() => {
         const token = localStorage.getItem("access_token");
 
-        // Redirect to login if no token is found
         if (!token) {
             navigate("/login");
             return;
         }
 
-        // Fetch user details if authenticated
-        axios.get("https://reqres.in/api/users")
+        axios.get(`https://reqres.in/api/users?page=${currentPage}&per_page=${usersPerPage}`)
             .then((res) => {
                 setUsers(res.data.data);
+                setTotalPages(res.data.total_pages);
             })
             .catch((err) => {
                 console.error("Error fetching users:", err);
+                navigate("/login"); 
             });
-    }, [navigate]);
-
-    const handleLogout = () => {
-        localStorage.clear();
-        navigate("/login");  // Redirect to login after logout
-    }
-
-    const indexOfLastUser = currentPage * usersPerPage;
-    const indexOfFirstUser = indexOfLastUser - usersPerPage;
-    const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
+    }, [navigate, currentPage, usersPerPage]);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+    const handleBack = () => {
+    navigate(-1); 
+    };
+
     return (
-        <div className="home">
-            <button onClick={handleLogout}>Logout</button>
-            <h1>Hello Users</h1>
-            <ul>
-                {currentUsers.map(user => (
-                    <div key={user.id}>
-                        <Link to={`/userdetail/${user.id}`}>
-                            <p>{user.first_name} {user.last_name}</p>
-                            <img src={user.avatar} alt={user.first_name} />
-                            <h3>{user.email}</h3>
+        <div className="home" id="userCard">
+            <div className="home-header">
+                <a href="/" className="logo-link">
+                    <img src="./src/assets/logo.jpeg" alt="Logo" className="logo" />
+                </a>
+                <h1 className="title">User List</h1>
+                <button onClick={handleBack} className="back-button">Back</button>
+            </div>
+            <div className="user-grid">
+                {users.map(user => (
+                    <div key={user.id} className="user-card">
+                        <Link to={`/userdetail/${user.id}`} className="user-link">
+                            <img src={user.avatar} alt={user.first_name} className="user-avatar" />
+                            <div className="user-info">
+                                <h2>{user.first_name} {user.last_name}</h2>
+                                <p>{user.email}</p>
+                            </div>
                         </Link>
                     </div>
                 ))}
-            </ul>
-            <Pagination usersPerPage={usersPerPage} totalUsers={users.length} paginate={paginate} />
+            </div>
+            <Pagination
+                usersPerPage={usersPerPage}
+                totalUsers={totalPages * usersPerPage}
+                paginate={paginate}
+            />
         </div>
     );
-}
+};
 
 export default Home;

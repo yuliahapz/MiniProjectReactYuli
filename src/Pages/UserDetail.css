@@ -1,73 +1,97 @@
-/* Global styles */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-}
-
-/* UserDetails component styles */
 .user-details {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 40px auto;
   padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
-}
-
-button {
-  background-color: #007BFF;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-bottom: 20px;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-h1 {
-  color: #333;
-  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
 }
 
 .user-card {
+  width: 100%; 
+  max-width: 400px;
+  margin-bottom: 30px;
   background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
-.user-card img {
+.user-avatar {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   margin-bottom: 20px;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.user-card h2 {
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.user-card p {
-  font-size: 16px;
+.user-email {
+  font-size: 1.1rem;
   color: #555;
   margin-bottom: 20px;
 }
 
-.user-card a {
-  text-decoration: none;
-  color: #007BFF;
-  font-weight: bold;
+.loading,
+.no-user {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 1.5rem;
+  color: darkcyan;
 }
 
-.user-card a:hover {
-  color: #0056b3;
+.user-reviews {
+  margin-top: 30px;
+}
+
+.user-reviews h3 {
+  margin-bottom: 20px;
+  color: darkcyan;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.review-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+}
+
+.review-author {
+  font-weight: bold;
+  color: darkcyan;
+  margin-bottom: 10px;
+}
+
+.review-text {
+  color: #777;
+  font-size: 0.95rem;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  color: darkcyan;
+  font-weight: 600;
+}
+
+.back-link:hover {
+  text-decoration: underline;
 }
